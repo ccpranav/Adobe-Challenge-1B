@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Persona-Driven Document Intelligence Output",
+  "description": "Schema for the output of the Persona-Driven Document Intelligence system",
+  "type": "object",
+  "required": ["metadata", "extracted_sections", "subsection_analysis"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["input_documents", "persona", "job_to_be_done", "processing_timestamp"],
+      "properties": {
+        "input_documents": {
+          "type": "array",
+          "description": "List of input PDF documents processed",
+          "items": {
+            "type": "string"
+          }
+        },
+        "persona": {
+          "type": "object",
+          "required": ["role", "expertise", "focus_areas"],
+          "properties": {
+            "role": {
+              "type": "string",
+              "description": "The role of the persona"
+            },
+            "expertise": {
+              "type": "array",
+              "description": "Areas of expertise for the persona",
+              "items": {
+                "type": "string"
+              }
+            },
+            "focus_areas": {
+              "type": "array",
+              "description": "Specific focus areas for the persona",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "job_to_be_done": {
+          "type": "string",
+          "description": "The specific task the persona needs to accomplish"
+        },
+        "processing_timestamp": {
+          "type": "string",
+          "description": "ISO 8601 timestamp when the processing was completed",
+          "format": "date-time"
+        }
+      }
+    },
+    "extracted_sections": {
+      "type": "array",
+      "description": "Ranked list of extracted sections from the documents",
+      "items": {
+        "type": "object",
+        "required": ["document", "page_number", "section_title", "importance_rank"],
+        "properties": {
+          "document": {
+            "type": "string",
+            "description": "The filename of the source document"
+          },
+          "page_number": {
+            "type": "integer",
+            "description": "The page number where the section starts (1-indexed)"
+          },
+          "section_title": {
+            "type": "string",
+            "description": "The title or heading of the section"
+          },
+          "importance_rank": {
+            "type": "number",
+            "description": "Numerical score indicating importance (lower is more important)",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "subsection_analysis": {
+      "type": "array",
+      "description": "Detailed analysis of subsections within the most important sections",
+      "items": {
+        "type": "object",
+        "required": ["document", "section_title", "refined_text", "page_number", "relevance_score"],
+        "properties": {
+          "document": {
+            "type": "string",
+            "description": "The filename of the source document"
+          },
+          "section_title": {
+            "type": "string",
+            "description": "The title or heading of the parent section"
+          },
+          "refined_text": {
+            "type": "string",
+            "description": "The extracted text of the subsection"
+          },
+          "page_number": {
+            "type": "integer",
+            "description": "The page number where the subsection appears (1-indexed)"
+          },
+          "relevance_score": {
+            "type": "number",
+            "description": "Numerical score indicating relevance to the persona and job (higher is more relevant)",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    }
+  }
+}

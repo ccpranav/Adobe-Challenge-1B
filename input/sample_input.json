@@ -1,0 +1,15 @@
+{
+  "collection_name": "Academic_Research",
+  "pdf_files": [
+    "pdf1.pdf",
+    "pdf2.pdf",
+    "pdf3.pdf",
+    "pdf4.pdf"
+  ],
+  "persona": {
+    "role": "PhD Researcher in Computational Biology",
+    "expertise": ["Machine Learning", "Molecular Biology", "Drug Discovery"],
+    "focus_areas": ["Graph Neural Networks", "Protein-Ligand Interactions", "Biomarker Discovery"]
+  },
+  "job_to_be_done": "Prepare a comprehensive literature review focusing on methodologies, datasets, and performance benchmarks for Graph Neural Networks in Drug Discovery"
+}

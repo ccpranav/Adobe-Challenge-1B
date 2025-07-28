@@ -1,0 +1,17 @@
+# Core dependencies
+PyMuPDF==1.21.1
+sentence-transformers==2.2.2
+numpy==1.24.3
+spacy==3.5.3
+
+# Additional utilities
+python-dateutil==2.8.2
+tqdm==4.65.0
+
+# PDF processing
+pdfminer.six==20221105
+
+# For optimized tensor operations
+torch==2.0.1
+torchvision==0.15.2
+torchaudio==2.0.2
